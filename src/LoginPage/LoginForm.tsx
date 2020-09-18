@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./LoginPage.css";
+import module_styles from "./LoginPage.module.css";
 
 function LoginForm() {
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
@@ -15,7 +15,7 @@ function LoginForm() {
     <form
       //   action=""
       method="post"
-      className="login-form"
+      className={module_styles["login-form"]}
       onSubmit={(e) => {
         // here we can validate the input before sending to the server
         setErrorMessage("Invalid Username or Password");
@@ -32,7 +32,7 @@ function LoginForm() {
           e.target.setCustomValidity("")
         }
         required
-        className="login-input"
+        className={module_styles["login-input"]}
       />
       <input
         type="password"
@@ -44,13 +44,15 @@ function LoginForm() {
           e.target.setCustomValidity("")
         }
         required
-        className="login-input"
+        className={module_styles["login-input"]}
       />
       {/* Show following error message only if the form is submitted and rejected */}
       {typeof errorMessage !== "undefined" && (
-        <span className="form-error-message">{errorMessage}</span>
+        <span className={module_styles["form-error-message"]}>
+          {errorMessage}
+        </span>
       )}
-      <button type="submit" className="login-button">
+      <button type="submit" className={module_styles["login-button"]}>
         Log In
       </button>
     </form>
